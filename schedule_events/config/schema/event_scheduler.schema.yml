@@ -1,0 +1,12 @@
+schedule_events.event:
+  type: entity
+  label: 'Event'
+  handlers:
+    storage: 'Drupal\Core\Entity\Sql\SqlContentEntityStorage'
+  base_table: event
+  entity_keys:
+    id: id
+    uuid: uuid
+    label: title
+    uid: created_by
+  field_ui_base_route: 'entity.event.admin_form'

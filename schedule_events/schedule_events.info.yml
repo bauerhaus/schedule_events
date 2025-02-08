@@ -1,0 +1,7 @@
+name: 'Event Scheduler'
+type: module
+description: 'A module for scheduling events and voting on time slots.'
+core_version_requirement: ^9 || ^10
+package: Custom
+dependencies:
+  - drupal:user

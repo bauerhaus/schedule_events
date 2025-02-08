@@ -1,0 +1,4 @@
+services:
+  schedule_events.mailer:
+    class: 'Drupal\schedule_events\Service\EventMailer'
+    arguments: ['@plugin.manager.mail', '@language_manager', '@logger.factory', '@request_stack']

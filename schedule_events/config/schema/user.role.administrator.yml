@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - schedule_events
+permissions:
+  - administer schedule_events

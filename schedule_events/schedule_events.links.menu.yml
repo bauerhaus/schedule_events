@@ -1,0 +1,7 @@
+schedule_events.admin_config_menu:
+  title: 'Event Scheduler'
+  description: 'Configure and create new events'
+  route_name: schedule_events.admin_config
+  parent: system.admin_config_system
+  menu_name: administration
+  weight: 5

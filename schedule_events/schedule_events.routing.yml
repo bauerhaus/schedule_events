@@ -1,0 +1,51 @@
+schedule_events.create:
+  path: '/event-scheduler/create'
+  defaults:
+    _controller: '\Drupal\schedule_events\Controller\ScheduleEventsController::createEvent'
+    _title: 'Create Event'
+  requirements:
+    _permission: 'create event'
+
+schedule_events.view_results:
+  path: '/event-scheduler/results/{event_id}'
+  defaults:
+    _controller: '\Drupal\schedule_events\Controller\ScheduleEventsController::viewResults'
+    _title: 'View Event Results'
+  requirements:
+    _permission: 'view event results'
+schedule_events.add_event:
+  path: '/event-scheduler/add'
+  defaults:
+    _form: '\Drupal\schedule_events\Form\EventForm'
+    _title: 'Add Event'
+  requirements:
+    _permission: 'create event'
+schedule_events.manage:
+  path: '/event-scheduler/manage/{event_id}'
+  defaults:
+    _controller: '\Drupal\schedule_events\Controller\ScheduleEventsController::manageEvents'
+    _title: 'Manage Event'
+  requirements:
+    _permission: 'administer schedule_events'
+schedule_events.vote:
+  path: '/event-scheduler/vote/{event_id}'
+  defaults:
+    _form: '\Drupal\schedule_events\Form\VoteForm'
+    _title: 'Vote on Event Time Slots'
+  requirements:
+    _permission: 'access content'
+schedule_events.view:
+  path: '/event-scheduler/view/{event_id}'
+  defaults:
+    _controller: '\Drupal\schedule_events\Controller\ScheduleEventsController::viewResults'
+    _title: 'View Event Results'
+  requirements:
+    _permission: 'access content'
+schedule_events.admin_config:
+  path: '/admin/config/event-scheduler'
+  defaults:
+    _form: '\Drupal\schedule_events\Form\ScheduleEventsConfigForm'
+    _title: 'Event Scheduler Configuration'
+  requirements:
+    _permission: 'administer schedule_events'
+  category: 'Configuration'

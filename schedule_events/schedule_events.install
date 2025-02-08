@@ -1,0 +1,135 @@
+<?php
+
+
+
+/**
+ * Implements hook_schema().
+ */
+function schedule_events_schema() {
+  $schema['schedule_events_event_votes'] = [
+    'description' => 'Stores votes for event time slots.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'event_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'guest_token' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE, 
+        'description' => 'Unique token identifying the invited guest.',
+      ],
+      'time_slot' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'voted_at' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  
+  $schema['schedule_events_event'] = [
+    'description' => 'Stores event scheduling details.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'uuid' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ],
+      'langcode' => [
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => 'en',
+      ],
+      'title' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'description' => [
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'location' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+      ],
+      'duration' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 30,
+      ],
+      'start_times' => [
+        'type' => 'text',
+        'not null' => FALSE,
+      ],
+      'created_by' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'final_time_slot' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'The finalized time slot selected by the manager.',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  $schema['schedule_events_event_invites'] = [
+    'description' => 'Stores invited guests with unique tokens.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'event_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'guest_name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'guest_email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'token' => [
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'unique' => TRUE,
+      ],
+      'priority' => [ 
+        'type' => 'varchar',
+        'length' => 20,
+        'not null' => FALSE,
+        'default' => 'May Attend',
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

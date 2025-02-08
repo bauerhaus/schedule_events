@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Implements hook_mail().
+ */
+function schedule_events_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'event_invite':
+    case 'event_finalized':
+      $message['subject'] = $params['subject'];
+      
+      // ✅ Ensure 'body' is set before accessing it
+      if (!empty($params['body']) && is_array($params['body'])) {
+        $message['body'][] = $params['body'][0];
+      } else {
+        $message['body'][] = 'No message content provided.'; // ✅ Prevents undefined key error
+      }
+      break;
+  }
+}

@@ -1,0 +1,11 @@
+create event:
+  title: 'Create an event'
+  description: 'Allows users to create scheduling events.'
+  restrict access: true
+view event results:
+  title: 'View event results'
+  description: 'Allows users to view the results of a scheduled event.'
+administer schedule_events:
+  title: 'Manage event votes'
+  description: 'Allows users to manage event votes and finalize time slots.'
+  restrict access: true
